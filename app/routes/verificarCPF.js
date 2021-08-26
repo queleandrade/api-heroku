@@ -7,10 +7,10 @@ module.exports = function(app){
         var MySQL = require('mysql');
 
         var conexao = MySQL.createConnection({ // minha configuração do XAMPP
-            host : 'localhost',
-            user: 'root',
-            password: '',
-            database: 'ambevtech'
+            host : process.env.DB_HOST || 'localhost',
+            user: process.env.DB_USER || 'root',
+            password: process.env.DB_PASS || '',
+            database: process.env.DB_NAME || 'ambevtech'
         });
 
         // Ao executar um Query executa exatamente uma funcao.
