@@ -1,7 +1,7 @@
 
 module.exports = function(app){
 
-    app.get("/verificarCPF", function(req, res){
+    app.post("/verificarCPF", function(req, res){
 
         // npm i mysql --save
         var MySQL = require('mysql');

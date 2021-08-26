@@ -1,6 +1,6 @@
 module.exports = function(app){
 
-    app.get("/cadastro", function(req, res){
+    app.post("/cadastro", function(req, res){
 
         // npm i mysql --save
         var MySQL = require('mysql');

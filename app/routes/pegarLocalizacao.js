@@ -2,7 +2,7 @@ module.exports = function(app){
 
     var axios = require("axios");
 
-    app.get("/pegarLocalizacao", function(req, res){
+    app.post("/pegarLocalizacao", function(req, res){
         axios.get("https://viacep.com.br/ws/".concat(req.body.cep).concat('/json/')).then((response) => {
             if(response.data.erro  == true){
                 return res.status(404).send({
