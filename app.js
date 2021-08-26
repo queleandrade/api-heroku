@@ -1,21 +1,22 @@
 // Configuracoes do express
-var app = require("./config/server");
-const port    = process.env.PORT || 3333;
-// Instanciei as rotas
-var cadastro = require("./app/routes/cadastro");
-var pegarLocalizacao = require("./app/routes/pegarLocalizacao");
-var verificarCPF = require("./app/routes/verificarCPF");
 
-app.get("/", (rec,res,next)=>{
-    return res.json({mensagem:"deu certo"})
-})
+var express = require('express');
+const cors = require("cors");
+const app = express();
+const port = process.env.PORT || 3333;
 
-//Iniciando as rotas
-cadastro(app);
-pegarLocalizacao(app);
-verificarCPF(app);
+app.use(cors())
 
+app.use(express.json())
 
-app.listen(port,function(){
+const {funcCadastro} = require("./app/routes/cadastro")
+const {funcPegarLocalizacao} = require("./app/routes/pegarLocalizacao")
+const {funcVerificarCPF} = require("./app/routes/verificarCPF")
+
+app.post("/cadastro", funcCadastro)
+app.post("/verificarCPF", funcVerificarCPF)
+app.post("/pegarLocalizacao", funcPegarLocalizacao)
+
+app.listen(port, function () {
     console.log("Servidor rodando na porta 3000");
 })
