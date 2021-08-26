@@ -1,6 +1,6 @@
 // Configuracoes do express
 var app = require("./config/server");
-
+const port    = process.env.PORT || 3333;
 // Instanciei as rotas
 var cadastro = require("./app/routes/cadastro");
 var pegarLocalizacao = require("./app/routes/pegarLocalizacao");
@@ -16,6 +16,6 @@ pegarLocalizacao(app);
 verificarCPF(app);
 
 
-app.listen(3000,function(){
+app.listen(port,function(){
     console.log("Servidor rodando na porta 3000");
 })
